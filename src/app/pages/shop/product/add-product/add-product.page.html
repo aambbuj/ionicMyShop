@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Add Product</ion-title>
+  </ion-toolbar>
+  </ion-header>
+<ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <form [formGroup]="addProductForm" (ngSubmit)="addProduct()">
+    <ion-card style="margin-top: 10px;">
+
+     <ion-item>
+       <div >
+        <ion-icon class="choseCamera" (click)="captureImage()" name="camera-outline"></ion-icon>
+       </div>
+       <div class="selectCamera">
+        <ion-icon name="image-outline" (click)="takePhoto()"></ion-icon>
+       </div>
+       <div>
+        <span *ngIf = "photo">
+          <img [src]="photo" class="imageClasss" height="60" width="60">
+          <ion-icon (click)="uploadsTakePhoto()" class="uploads" name="cloud-upload-outline"></ion-icon>  
+        </span>
+       </div>
+    </ion-item>
+    <div *ngIf="ifUploadPhoto">
+
+      <ion-item>
+        <ion-label>Brand Name</ion-label>
+        <ion-button  size="small" (click)="addBrand()">+</ion-button>
+        <ion-select formControlName="brand_id"  interface="popover" placeholder="Select Brand" *ngIf="brandWiseCategories!=''">
+          <ion-select-option *ngFor="let brand of brandWiseCategories" value="{{brand.id}}" >{{brand.brand_name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Category Name</ion-label>
+        <ion-button (click)="addCategory()">+</ion-button>
+        <ion-select  formControlName="category_id" (click) = "pushCategory()" interface="popover" placeholder="Select Category" *ngIf="brandWiseCategories!=''">
+          <ion-select-option  *ngFor="let category of selectedCategories" value="{{category.id}}">{{category.category_name}}</ion-select-option>
+        </ion-select>
+
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Product Type</ion-label>
+        <ion-select  formControlName="product_type" interface="popover" placeholder="Select Brand">
+          <ion-select-option value="Par KG"> Par KG </ion-select-option>
+          <ion-select-option value="Par Piece"> Par Piece </ion-select-option>
+          <ion-select-option value="Par Quintal"> Par Quintal </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Product Name</ion-label>
+        <ion-input type="name" (click)="setCategoryName()" formControlName="product_name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Purchase Price</ion-label>
+        <ion-input type="number" formControlName="purchase_price"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Selling Price</ion-label>
+        <ion-input type="number" formControlName="selling_price"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Disccount Selling Price</ion-label>
+        <ion-input type="number"  formControlName="disc_sell_price"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Quantity</ion-label>
+        <ion-input type="number"  formControlName="qty"></ion-input>
+      </ion-item>
+    </div>
+
+    </ion-card>
+    <ion-button [disabled]="!addProductForm.valid" type="submit" shape="round" color="success" expand="block">Submit</ion-button>
+  </form>
+</ion-content>

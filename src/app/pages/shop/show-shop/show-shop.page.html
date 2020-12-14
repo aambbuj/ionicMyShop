@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Shop List</ion-title>
+  </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content
+        pullingIcon="chevron-down-circle-outline"
+        pullingText="Pull to refresh"
+        refreshingSpinner="circles">
+      </ion-refresher-content>
+    </ion-refresher>
+    
+      <!-- fab placed to the (vertical) center and end -->
+      <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button routerLink="/add-shop">
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+      </ion-fab> -->
+
+      <ion-card *ngFor = "let shop of shops">
+        <ion-card-header class="p-1">
+          <ion-item >
+            <ion-card-title>{{shop.shop_name}}</ion-card-title>
+          </ion-item>
+        </ion-card-header>
+        <ion-card-content class="p-1">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="4">
+                <img src="assets/login.jpg" class="rounded-circle" height="50" width="50">
+              </ion-col>
+              <ion-col size="8">
+                <p><strong>Phone:</strong><span>{{shop.shop_phone}}</span></p>
+                <p><strong>State:</strong><span>{{shop.state}}</span></p>
+                <p><strong>City:</strong><span>{{shop.city}}</span></p>
+                <p><strong>Address:</strong><span>{{shop.shop_address}}</span></p>
+              </ion-col>
+            </ion-row>
+            </ion-grid>
+            <ion-grid>
+              <ion-row>
+                <ion-col >
+                  <ion-button color="tertiary"><ion-icon slot="start" name="person"></ion-icon>Seles</ion-button>
+                </ion-col>
+                <ion-col >
+                  <ion-button  color="tertiary"><ion-icon slot="start" name="basket"></ion-icon>Stocks</ion-button>
+                </ion-col>
+                <ion-col >
+                  <ion-button routerLink="/show-products" color="tertiary"> <ion-icon slot="start" name="star"></ion-icon>Products</ion-button>
+                </ion-col>
+              </ion-row>
+              </ion-grid>
+        </ion-card-content>
+      </ion-card>
+      
+      <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+        <ion-infinite-scroll-content
+          loadingSpinner="bubbles"
+          loadingText="Loading...">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+      
+  </ion-content>
+  

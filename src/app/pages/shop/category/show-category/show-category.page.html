@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>All Category</ion-title>
+  </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content
+        pullingIcon="chevron-down-circle-outline"
+        pullingText="Pull to refresh"
+        refreshingSpinner="circles">
+      </ion-refresher-content>
+    </ion-refresher>
+    
+      <!-- fab placed to the (vertical) center and end -->
+      <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button routerLink="/add-category">
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+
+      <ion-list *ngFor="let category of categories;let i = index">
+      
+        <ion-item *ngFor="let eachCategory of category;let j = index">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="10">
+                {{eachCategory.category_name}}
+              </ion-col>
+              <ion-col>
+                <ion-icon class="trash" name="trash-outline"></ion-icon>
+                <ion-icon name="create"></ion-icon>
+              </ion-col>
+            </ion-row>
+            </ion-grid>
+        </ion-item>
+      </ion-list>
+      
+      <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+        <ion-infinite-scroll-content
+          loadingSpinner="bubbles"
+          loadingText="Loading...">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+      
+  </ion-content>
+  

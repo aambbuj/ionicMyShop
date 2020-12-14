@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Sell Product List</ion-title>
+  </ion-toolbar>
+  </ion-header>
+  
+<ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles">
+    </ion-refresher-content>
+  </ion-refresher>
+  
+
+  <ion-fab vertical="top" horizontal="end" edge slot="fixed">
+    <ion-fab-button (click)="addProduct()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab vertical="top" horizontal="start" edge slot="fixed">
+    <ion-fab-button color="danger" size="small" (click)="closeModal()">
+      <ion-icon name="close"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+    <div class="panel panel-primary" *ngFor="let product of productDetails;let i = index">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          {{product.category_name}}
+        </h4>
+      </div>
+      <div class="panel-body" style="padding: 2px;">
+        <ion-grid style="padding: 1px;">
+          <ion-row style="padding: 1px;">
+            <ion-col size="4">
+              <img src="assets/login.jpg">
+            </ion-col>
+            <ion-col>
+              <strong style="color: brown;font-size: large;font-style: oblique;font-family: auto;"> {{product.product_name}}</strong>
+              <ion-grid style="padding: 1px;">
+                <ion-row style="padding: 1px;">
+                  <ion-col >
+                    <b style="color: darkgreen;font-style: oblique;font-family: auto;">{{product.selling_price}}/</b><br>
+                    <span style="font-size:small;">{{product.product_type}}</span>
+                  </ion-col>
+                  <ion-col>
+                   <b class="text-capitalize info">{{product.brand_name}}</b><br>
+                   <ion-button size="small" color="danger" (click)="removeItem(i)">Remove</ion-button>
+                  </ion-col>
+                </ion-row>
+                </ion-grid>
+            </ion-col>
+          </ion-row>
+          </ion-grid>
+      </div>
+    </div>
+    <strong>Total Amount :- {{totalAmount}}</strong>
+    <form [formGroup]="sellProductForm" (ngSubmit)="sellingProduct()">
+    <ion-item>
+      <ion-label position="floating">Total Selling Amount </ion-label>
+      <ion-input type="number" formControlName="total_selling_price"></ion-input>
+    </ion-item>
+  <ion-button  [disabled]="!sellProductForm.valid" type="submit" shape="round" color="success" expand="block">Submit</ion-button>
+</form>
+
+
+
+</ion-content>

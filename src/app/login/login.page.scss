@@ -1,0 +1,36 @@
+toast-wrapper toast-bottom{
+    bottom: calc(8px + var(--ion-safe-area-bottom, 0px));
+    border-radius: 25px;
+    height: 25px;
+    border-radius: 2px solid red;
+    border: 1px solid red;
+    text-align: center;
+    /* text-decoration-color: darkgreen; */
+    font-size: 12px;
+}
+
+
+ion-toast{
+    background: white !important ;
+    color: red!important ;
+}
+
+toast-container {
+background: white !important ;
+color: red!important ;
+}
+.toast-container {
+background: white !important ;
+color: red!important ;
+}
+ion-toast {border-radius: 0.65rem !important; background: white !important } 
+
+.toast-md {
+background: white !important ;
+color: red!important ;
+} 
+
+toast-md {
+background: white !important ;
+color: red!important ;
+} 

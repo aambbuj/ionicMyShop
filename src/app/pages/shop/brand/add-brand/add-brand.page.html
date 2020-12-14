@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Add Brand</ion-title>
+  </ion-toolbar>
+  </ion-header>
+<ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <form [formGroup]="addBrandForm" (ngSubmit)="addBrand()">
+    
+<ion-card style="margin-top: 10px;">
+  <ion-item>
+    <ion-label position="floating">Brand Name</ion-label>
+    <ion-input type="name" formControlName="brand_name"></ion-input>
+  </ion-item>
+</ion-card>
+    <ion-button [disabled]="!addBrandForm.valid" type="submit" shape="round" color="success" expand="block">Submit</ion-button>
+</form>
+</ion-content>

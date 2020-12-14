@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Add Worker</ion-title>
+  </ion-toolbar>
+  </ion-header>
+<ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <form [formGroup]="addWorkerForm" (ngSubmit)="addWorker()">
+    
+<ion-card style="margin-top: 10px;">
+  <ion-item>
+    <ion-label position="floating">Name</ion-label>
+    <ion-input type="name" formControlName="name"></ion-input>
+  </ion-item>
+</ion-card>
+
+<ion-card>
+  <ion-item>
+    <ion-label position="floating">Email</ion-label>
+    <ion-input type="email" formControlName="email"></ion-input>
+  </ion-item>
+</ion-card>
+
+<ion-card>
+  <ion-item>
+    <ion-label position="floating">Password</ion-label>
+    <ion-input type="password" formControlName="password"></ion-input>
+  </ion-item>
+</ion-card>
+
+<ion-card>
+  <ion-item>
+    <ion-label position="floating">Phone</ion-label>
+    <ion-input type="number" formControlName="phone"></ion-input>
+  </ion-item>
+</ion-card>
+
+<ion-card>
+  <ion-item>
+    <ion-label position="floating">Alt-Phone</ion-label>
+    <ion-input type="number" formControlName="alt_phone"></ion-input>
+  </ion-item>
+</ion-card>
+
+<ion-card>
+  <ion-item>
+    <ion-label position="floating">Country</ion-label>
+    <ion-input type="name"  formControlName="country"></ion-input>
+  </ion-item>
+</ion-card>
+<ion-card>
+
+  
+  <ion-item>
+    <ion-label position="floating">State</ion-label>
+    <ion-input type="name"   formControlName="state"></ion-input>
+  </ion-item>
+</ion-card>
+
+<ion-card>
+  <ion-item>
+    <ion-label position="floating">City</ion-label>
+    <ion-input type="name"  formControlName="city"></ion-input>
+  </ion-item>
+</ion-card>
+
+<ion-card>
+  <ion-item>
+    <ion-label position="floating">Address</ion-label>
+    <ion-input type="name" formControlName="address"></ion-input>
+  </ion-item>
+</ion-card>
+
+<ion-card>
+  <ion-item>
+    <ion-label position="floating">Pin</ion-label>
+    <ion-input type="number" formControlName="pin"></ion-input>
+  </ion-item>
+</ion-card>
+    <ion-button [disabled]="!addWorkerForm.valid" type="submit" shape="round" color="success" expand="block">Submit</ion-button>
+</form>
+</ion-content>

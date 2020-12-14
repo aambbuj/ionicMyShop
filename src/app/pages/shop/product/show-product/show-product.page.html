@@ -1,0 +1,104 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>All Products</ion-title>
+  </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content
+        pullingIcon="chevron-down-circle-outline"
+        pullingText="Pull to refresh"
+        refreshingSpinner="circles">
+      </ion-refresher-content>
+    </ion-refresher>
+    
+      <!-- fab placed to the (vertical) center and end -->
+      <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button routerLink="/add-product">
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+
+
+        <!-- Actual search box -->
+        <div class="form-group has-feedback has-search" style="margin: 5px 4px;">
+          <span class="glyphicon glyphicon-search form-control-feedback"></span>
+          <ion-input type="text" class="form-control" placeholder="Search" (ionInput)="findCategoryName($event)"></ion-input>
+        </div>
+      
+      <div class="panel-group" id="accordion" style="margin: 5px 4px;">
+        <div class="panel panel-primary" *ngFor="let product of products;let i = index">
+          <div class="panel-heading">
+            <a data-toggle="collapse" data-parent="#accordion" href="#{{product.category_name}}">
+
+            <h4 class="panel-title" style="color: white;">
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    {{product.category_name}}
+                  </ion-col>
+                  <ion-col style="text-align: right;">
+                    <span style="font-size: 15px;font-weight: bold;color: brown;text-shadow: 1px 1px 0px black"><ion-icon name="wallet-outline"></ion-icon>{{product.total_amount}}</span>
+                  </ion-col>
+                  </ion-row>
+                  </ion-grid>
+             
+            </h4>
+          </a>
+          </div>
+          <div id="{{product.category_name}}" class="panel-collapse collapse">
+
+                    <!-- Actual search box -->
+            <div class="form-group has-feedback has-search" style="margin: 5px 4px;">
+              <span class="glyphicon glyphicon-search form-control-feedback"></span>
+              <ion-input type="text" class="form-control" placeholder="Search" (ionInput)="findProductName($event ,product.category_name , i)"></ion-input>
+            </div>
+
+            <div class="panel-body" style="padding: 2px;" *ngFor="let details of product.products">
+              <ion-grid>
+                <ion-row>
+                  <ion-col size="4">
+                    <img src="{{img_url}}{{details.image.image_url}}" height="60" width="60">
+                  </ion-col>
+                  <ion-col>
+                    <strong style="color: brown;font-size: large;font-style: oblique;font-family: auto;">{{details.product_name}}</strong>
+                    <ion-grid>
+                      <ion-row>
+                        <ion-col >
+                          <b style="color: darkgreen;font-style: oblique;font-family: auto;">{{details.selling_price}}/</b><br>
+                          <span style="font-size:small;">{{details.product_type}}</span><br>
+                           Qty :- <strong>{{details.qty}}</strong>
+                        </ion-col>
+                        <ion-col>
+                         <b class="text-capitalize info">{{details.brand_name}}</b><br>
+                         
+                          <div class="btn-group" style="text-align: center;">
+                            <button type="button" class="btn btn-primary btn-sm">More</button>
+                            <button type="button" class="btn btn-info btn-sm" (click)="sellProduct(details)">Sell</button>
+                          </div>
+                        
+                        </ion-col>
+                      </ion-row>
+                      </ion-grid>
+                  </ion-col>
+                </ion-row>
+                </ion-grid>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      
+      <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+        <ion-infinite-scroll-content
+          loadingSpinner="bubbles"
+          loadingText="Loading...">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+      
+  </ion-content>
+  

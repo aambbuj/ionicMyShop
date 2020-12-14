@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Get Orders</ion-title>
+  </ion-toolbar>
+  </ion-header>
+<ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <form [formGroup]="getOrderForm" (ngSubmit)="addOrders()">
+    
+<ion-card style="margin-top: 10px;">
+  <ion-item>
+    <div >
+      <ion-icon class="choseCamera" (click)="captureImage()" name="camera-outline"></ion-icon>
+    </div>
+    <div class="selectCamera">
+      <ion-icon name="image-outline" (click)="takePhoto()"></ion-icon>
+    </div>
+    <div>
+      <span *ngIf = "photo">
+        <img [src]="photo" class="imageClasss" height="60" width="60">
+        <ion-icon (click)="uploadsTakePhoto()" class="uploads" name="cloud-upload-outline"></ion-icon>  
+      </span>
+    </div>
+  </ion-item>
+</ion-card>
+<ion-card >
+  <ion-item>
+    <ion-label position="floating">Order Type</ion-label>
+    <ion-input type="name" formControlName="order_type"></ion-input>
+  </ion-item>
+</ion-card>
+
+<ion-card>
+  <ion-item>
+    <ion-label position="floating">Product Name</ion-label>
+    <ion-input type="name" formControlName="product_name"></ion-input>
+  </ion-item>
+</ion-card>
+
+<ion-card>
+  <ion-item>
+    <ion-label position="floating">Customer Phone</ion-label>
+    <ion-input type="number" formControlName="customer_phone"></ion-input>
+  </ion-item>
+</ion-card>
+
+<ion-card>
+  <ion-item>
+      <ion-label position="floating">Order Price</ion-label>
+      <ion-input type="number" formControlName="order_price"></ion-input>
+  </ion-item>
+</ion-card>
+
+<ion-card>
+  <ion-item>
+    <ion-label position="floating">Advance Payment</ion-label>
+    <ion-input type="name"  formControlName="advance_payment"></ion-input>
+  </ion-item>
+</ion-card>
+<ion-item>
+  <ion-label>Delivery Date</ion-label>
+  <ion-datetime formControlName="delivery_date" displayFormat="DD/MM/YYYY"></ion-datetime>
+</ion-item>
+    <ion-button [disabled]="!getOrderForm.valid" type="submit" shape="round" color="success" expand="block">Submit</ion-button>
+</form>
+</ion-content>

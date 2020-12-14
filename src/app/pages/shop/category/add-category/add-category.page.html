@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Add Category</ion-title>
+  </ion-toolbar>
+  </ion-header>
+<ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles">
+    </ion-refresher-content>
+  </ion-refresher>
+  <form [formGroup]="addCategoryForm" (ngSubmit)="addCategory()">
+    <ion-card style="margin-top: 10px;">
+      <ion-item>
+        <ion-label>Select Brand</ion-label>
+        <ion-select  formControlName="brand_id"  interface="popover" placeholder="Select Brand">
+          <ion-select-option *ngFor="let brand of allBrands" value="{{brand.id}}">{{brand.brand_name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Category Name</ion-label>
+        <ion-input type="name" formControlName="category_name"></ion-input>
+      </ion-item>
+    </ion-card>
+    <ion-button [disabled]="!addCategoryForm.valid" type="submit" shape="round" color="success" expand="block">Submit</ion-button>
+  </form>
+</ion-content>
