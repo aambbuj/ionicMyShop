@@ -4,6 +4,23 @@
             "outputFile": "C:\\projects\\my-shop\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sw600dp-v13\\values-sw600dp-v13.xml",
             "map": [
                 {
+                    "source": "C:\\Users\\ambuj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.1.0.aar\\b9a71fd09429467c81fae2c9c1f18ef0\\res\\values-sw600dp\\values-sw600dp.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,10,13,14,15",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "291,360,430,504,816,1111,1182,1250",
+                        "endColumns": "68,69,73,75,58,70,67,54",
+                        "endOffsets": "355,425,499,575,870,1177,1245,1300"
+                    },
+                    "to": {
+                        "startLines": "3,4,5,6,7,8,9,10",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "93,162,232,306,382,441,512,580",
+                        "endColumns": "68,69,73,75,58,70,67,54",
+                        "endOffsets": "157,227,301,377,436,507,575,630"
+                    }
+                },
+                {
                     "source": "C:\\Users\\ambuj\\.gradle\\caches\\transforms-1\\files-1.1\\checkout-1.5.12.aar\\0fabdb5ed3e4ab7c4742d785fb9cb0ae\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3",
@@ -12,6 +29,14 @@
                         "endLines": "2,13",
                         "endColumns": "37,12",
                         "endOffsets": "88,745"
+                    },
+                    "to": {
+                        "startLines": "2,11",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,635",
+                        "endLines": "2,21",
+                        "endColumns": "37,12",
+                        "endOffsets": "88,1287"
                     }
                 }
             ]

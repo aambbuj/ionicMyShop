@@ -4,8 +4,15 @@
             "outputFile": "C:\\projects\\my-shop\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-port\\values-port.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\ambuj\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\f8d03bb1e43de26c95f206261293c9d1\\res\\values-port\\values-port.xml",
+                    "source": "C:\\Users\\ambuj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.1.0.aar\\b9a71fd09429467c81fae2c9c1f18ef0\\res\\values-port\\values-port.xml",
                     "from": {
+                        "startLines": "4",
+                        "startColumns": "4",
+                        "startOffsets": "287",
+                        "endColumns": "55",
+                        "endOffsets": "338"
+                    },
+                    "to": {
                         "startLines": "2",
                         "startColumns": "4",
                         "startOffsets": "55",

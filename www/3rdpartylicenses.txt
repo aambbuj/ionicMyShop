@@ -53,6 +53,9 @@ MIT
 @ionic-native/file
 MIT
 
+@ionic-native/qr-scanner
+MIT
+
 @ionic-native/sms
 MIT
 

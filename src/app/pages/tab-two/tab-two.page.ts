@@ -6,6 +6,8 @@ import { ToastController } from "@ionic/angular"
 import { AlertService } from 'src/app/services/alert.service';
 import { PaymentService } from 'src/app/pages/payments/payment.service';
 import { EnvService } from 'src/app/services/env.service';
+import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
+
 @Component({
   selector: 'app-tab-two',
   templateUrl: './tab-two.page.html',
@@ -16,7 +18,13 @@ export class TabTwoPage implements OnInit {
   myContacts : Contact [] = [];
   SMS:any;
   paymetURL: string;
-  constructor( private env: EnvService, private payment : PaymentService , private loading : AlertService ,private contacts : Contacts, private callNumber : CallNumber , private sms : SMS , private toastCtrl : ToastController ) { 
+// QR code scanner variable .................
+  encodedData = '';
+  QRSCANNED_DATA: string;
+  isOn = false;
+  scannedData: {};
+
+  constructor( private qrScanner: QRScanner ,private env: EnvService, private payment : PaymentService , private loading : AlertService ,private contacts : Contacts, private callNumber : CallNumber , private sms : SMS , private toastCtrl : ToastController ) { 
     this.paymetURL = this.env.paymetURL;
   }
 
@@ -61,11 +69,43 @@ export class TabTwoPage implements OnInit {
     );
   }
 
-
-
-
 payWithRazorpay(){
   window.location.href = this.paymetURL;
+}
+
+
+// QR code scanning code .............................
+
+scannQeCode(){
+  // Optionally request the permission early
+this.qrScanner.prepare()
+.then((status: QRScannerStatus) => {
+   if (status.authorized) {
+     // camera permission was granted
+
+
+     // start scanning
+     let scanSub = this.qrScanner.scan().subscribe((text: string) => {
+       console.log('Scanned something', text);
+       alert(text);
+
+     this.qrScanner.hide(); // hide camera preview
+      scanSub.unsubscribe(); // stop scanning
+     });
+
+   } else if (status.denied) {
+     // camera permission was permanently denied
+     // you must use QRScanner.openSettings() method to guide the user to the settings page
+     // then they can grant the permission from there
+   } else {
+     // permission was denied, but not permanently. You can ask for permission again at a later time.
+   }
+})
+.catch((e: any) => 
+console.log('Error is', e)
+
+);
+alert('something wrong');
 }
 
   ngOnInit() {

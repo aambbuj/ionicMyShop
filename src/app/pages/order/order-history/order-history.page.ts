@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AlertController, ModalController, NavParams } from '@ionic/angular';
 import { AlertService } from 'src/app/services/alert.service';
 import { OrderService } from '../../order/order.service';
+import { EnvService } from 'src/app/services/env.service';
 
 @Component({
   selector: 'app-order-history',
@@ -13,9 +14,11 @@ export class OrderHistoryPage implements OnInit {
 
   data = this.navParams.get('orderHistory');
   orderHistory: any;
+  imageURL:any;
 
-  constructor(public alertController: AlertController , private order : OrderService , public modalController: ModalController,private navParams: NavParams,private loading : AlertService,private router: Router) { 
+  constructor(public image: EnvService ,public alertController: AlertController , private order : OrderService , public modalController: ModalController,private navParams: NavParams,private loading : AlertService,private router: Router) { 
     this.orderHistory = this.data;
+    this.imageURL = image.IMG_URL;
     console.log(this.orderHistory)
     
   }

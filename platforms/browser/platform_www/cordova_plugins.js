@@ -373,6 +373,20 @@ module.exports = [
         "id": "com.razorpay.cordova.CheckoutProxy",
         "pluginId": "com.razorpay.cordova",
         "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-qrscanner/www/www.min.js",
+        "id": "cordova-plugin-qrscanner.QRScanner",
+        "pluginId": "cordova-plugin-qrscanner",
+        "clobbers": [
+            "QRScanner"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-qrscanner/src/browser/plugin.min.js",
+        "id": "cordova-plugin-qrscanner.QRScannerProxy",
+        "pluginId": "cordova-plugin-qrscanner",
+        "runs": true
     }
 ];
 module.exports.metadata = 
@@ -389,7 +403,8 @@ module.exports.metadata =
     "mx.ferreyra.callnumber": "0.0.2",
     "cordova-sms-plugin": "1.0.0",
     "cordova-plugin-contacts": "3.0.1",
-    "com.razorpay.cordova": "0.16.1"
+    "com.razorpay.cordova": "0.16.1",
+    "cordova-plugin-qrscanner": "3.0.1"
 }
 // BOTTOM OF METADATA
 });

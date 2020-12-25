@@ -345,6 +345,14 @@ module.exports = [
     "clobbers": [
       "RazorpayCheckout"
     ]
+  },
+  {
+    "id": "cordova-plugin-qrscanner.QRScanner",
+    "file": "plugins/cordova-plugin-qrscanner/www/www.min.js",
+    "pluginId": "cordova-plugin-qrscanner",
+    "clobbers": [
+      "QRScanner"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -361,7 +369,8 @@ module.exports.metadata =
   "mx.ferreyra.callnumber": "0.0.2",
   "cordova-sms-plugin": "1.0.0",
   "cordova-plugin-contacts": "3.0.1",
-  "com.razorpay.cordova": "0.16.1"
+  "com.razorpay.cordova": "0.16.1",
+  "cordova-plugin-qrscanner": "3.0.1"
 };
 // BOTTOM OF METADATA
 });

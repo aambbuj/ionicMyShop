@@ -16,7 +16,7 @@ import { File } from '@ionic-native/file/ngx';
 import { CallNumber } from "@ionic-native/call-number/ngx";
 import { SMS } from '@ionic-native/sms/ngx';
 import { Contacts} from '@ionic-native/contacts/ngx';
-
+import { QRScanner} from '@ionic-native/qr-scanner/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -35,6 +35,7 @@ import { Contacts} from '@ionic-native/contacts/ngx';
     Contacts,
     CallNumber,
     SMS,
+    QRScanner,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
   bootstrap: [AppComponent]

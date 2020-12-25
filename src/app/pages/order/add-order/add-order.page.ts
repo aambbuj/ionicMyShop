@@ -53,7 +53,7 @@ export class AddOrderPage implements OnInit {
       }).then((imageData) => {
         let base64Image = 'data:image/jpeg;base64,' + imageData;
         this.photo = base64Image;
-        this.getOrderForm.controls.order_image.setValue(this.photo ? this.photo : null);
+        this.getOrderForm.controls.order_image.setValue(this.photo ? imageData : null);
       }, (err) => {
         console.log(err);
         this.loading.presentToastWarning(err);
@@ -74,11 +74,12 @@ export class AddOrderPage implements OnInit {
         }).then((dataImage) => {
           let base64Image = 'data:image/jpeg;base64,' + dataImage;
           this.photo = base64Image;
-          this.getOrderForm.controls.order_image.setValue(this.photo ? this.photo : '');
+          this.getOrderForm.controls.order_image.setValue(this.photo ? dataImage : null);
         }, (err) => {
           // Handle error
         });
       }
+      
 
   addOrders()
   {
