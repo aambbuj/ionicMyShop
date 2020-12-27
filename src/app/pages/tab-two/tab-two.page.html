@@ -40,9 +40,30 @@
   </ion-button>
 
 
-  <ion-card class="welcome-card">
+  <!-- <ion-card class="welcome-card">
       <ion-card-title> QR Code </ion-card-title>
     <ion-button expand='block' margin (click)="scannQeCode()">Click to scan a barcode</ion-button>
   </ion-card>
+<p>{{scannData}}</p> -->
 
+<div class="ion-padding">
+  <ion-button (click)="scannQeCode()" expand="full">qrscanner</ion-button>
+  <p *ngIf="qrText">{{ qrText }}</p>
+
+  <p> Dist :- {{qrText._dist}}</p>
+  <p> DOB :- {{qrText._dob}}</p>
+  <p> Gender :- {{qrText._gender}}</p>
+  <p> Gname :- {{qrText._gname}}</p>
+  <p> Name :- {{qrText._name}}</p>
+  <p> PIN :- {{qrText._pc}}</p>
+  <p> PO :- {{qrText._po}}</p>
+  <p> State :- {{qrText._state}}</p>
+  <p> Subdist :- {{qrText._subdist}}</p>
+  <p> _uid :- {{qrText._uid}}</p>
+  <p> _vtc :- {{qrText._vtc}}</p>
+  <p> _yob :- {{qrText._yob}}</p>
+
+</div>
+   
+<ion-button (click) = "manage()">click</ion-button>
 </ion-content>
